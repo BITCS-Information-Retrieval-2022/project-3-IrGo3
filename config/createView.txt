@@ -1,0 +1,10 @@
+use IR
+db.createView("paperView", "paper", [{$project: {"id": 1, "title": 1, "published": 1, "authors": 1}}])
+
+db.createView("videoView", "video", [{$project: {"bvid": 1, "title": 1, "description": 1}}])
+
+db.createView("pptView", "ppt", [{$project: {"title": 1, "paper": 1}}])
+
+db.createView("ebookView", "ebook", [{$project: {"id": 1, "title": 1, "authors": 1, "on_sale_date": 1}}])
+
+
