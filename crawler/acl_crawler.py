@@ -1,7 +1,6 @@
 # -*- codeing = utf-8 -*-
-# @Time  :2021/6/28 22:03
-# @Author: wangyuhan
-# @File  :BaiduScholar.py
+# @Author: youchaoZhou
+# @File  :acl_crawler.py
 # @Software: PyCharm
 
 '''
