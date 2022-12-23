@@ -1,7 +1,8 @@
 <template>
     <p class="title">{{info.title}}</p>
     <el-row>
-    <button class="button"> <i class="elements-icons el-iconyuanshuju-yinyong"></i>引用</button><button class="button"><i class="elements-icons el-iconpdf"></i>来源</button>
+    <button class="button"> <i class="elements-icons el-iconyuanshuju-yinyong"></i>引用</button>
+    <button class="button"  @click="getSource(info.url_abs)"><i class="elements-icons el-iconpdf"></i>来源</button>
     <button class="button" @click="GetPPT"><i class="elements-icons el-iconppt"></i>演示文稿</button>
     </el-row>
 
@@ -95,7 +96,12 @@ const activeName = ref('first');
                 if(url!==''){
                     window.open(url);
                 }
-            }
+            },
+            getSource(url){
+                if(url!==''){
+                    window.location.href =url;
+                }
+            },
             
         },
         mounted:function(){
@@ -127,6 +133,7 @@ const activeName = ref('first');
   padding-left:20px;
   padding-right:100px;
   margin-bottom:20px;
+  text-align:left;
 }
 .pabs{
   font-size:18px;
@@ -140,9 +147,8 @@ const activeName = ref('first');
   display:flex;
   justify-content: start;
   margin-bottom:10px;
-  text-align: justify;
-  text-justify:distribute-all-lines;
-  width: 550px;
+  text-align:middle;
+  width:550px
 }
 .el-divider{
   margin:2px;

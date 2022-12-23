@@ -5,7 +5,8 @@
       </div>
       <div class="card-header">Related papers:{{info.paper}}</div>
     <div class="card-body">
-        <div id="absarea" class="abst"><label class="btn" for="showAbs"></label>{{ info.desc}}</div>
+        <TextOverflow :text="info.desc" :maxLines="2">
+        </TextOverflow>
         <el-row>
         <button class="button" text> <i class="elements-icons el-iconyuanshuju-yinyong"></i>引用</button>
         <button class="button" @click="getSource(info.url)"><i class="elements-icons el-iconpdf"></i>来源</button>
@@ -15,13 +16,17 @@
 </template>
 
 <script>
+    import TextOverflow from "./TextOverflow";
     export default {
-        name: "SearchBooks",
+        name: "SearchPPT",
         props: ["info"],
         data(){
             return {
                 isabs:false,
             }
+        },
+        components: {
+            TextOverflow:TextOverflow
         },
         methods:{
             getPDF(url){

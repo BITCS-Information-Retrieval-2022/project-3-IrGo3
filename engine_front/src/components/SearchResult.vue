@@ -5,9 +5,8 @@
       </div>
       <div class="card-header">authors:{{info.authors}}</div>
     <div class="card-body">
-        <div v-if="isabs" class="Fabst"> <input type="checkbox" id="showAbs" style="display:none;"/>
-        <div id="absarea" class="abst"><label class="btn" for="showAbs"></label>{{ info.abstract }}</div>
-        </div>
+        <TextOverflow :text="info.abstract" :maxLines="2">
+        </TextOverflow>
         <el-row>
         <button class="button" text> <i class="elements-icons el-iconyuanshuju-yinyong"></i>引用</button><button class="button" @click="getPDF(info.url_pdf)"><i class="elements-icons el-iconpdf"></i>PDF</button><button class="button" @click="getSource(info.url_abs)"><i class="elements-icons el-iconpdf"></i>来源</button>
         <el-tooltip popper-class="atooltip" placement="bottom" effect="dark"><template v-slot:content>{{info.video_url}}</template>
@@ -19,6 +18,7 @@
 </template>
 
 <script>
+    import TextOverflow from "./TextOverflow";
     export default {
         name: "SearchResult",
         props: ["info"],
@@ -26,6 +26,9 @@
             return {
                 isabs:false,
             }
+        },
+        components: {
+            TextOverflow:TextOverflow
         },
         methods:{
             getPDF(url){
