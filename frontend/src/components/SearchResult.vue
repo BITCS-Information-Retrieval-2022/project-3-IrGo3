@@ -28,7 +28,7 @@
             ShowDetails(id){
                 console.log("ooooo")
                 console.info(this.info)
-                this.$router.push({path: `/searchDetails`, query: {res: this.info}})
+                this.$router.push({path: `/searchDetails`, query: {res: this.info.arxiv_id}})
             },
             GetVedio(url){
                 if(url!==''){

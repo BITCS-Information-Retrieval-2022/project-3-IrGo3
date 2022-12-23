@@ -1,0 +1,16 @@
+{
+  "id": "3733828",
+  "name": "SearchEngine",
+  "font_family": "elements-icons",
+  "css_prefix_text": "el-icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "5638802",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    }
+  ]
+}

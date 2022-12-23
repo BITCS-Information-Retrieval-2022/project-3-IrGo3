@@ -96,6 +96,20 @@ def search_video():
     print(res)
     return json.dumps(res["hits"]["hit"])
 
+def search_id():
+    id=request.args.get('query', '')
+    print(type(id))
+    print(id)
+    res = paper_db.search_by_id(id)
+    return json.dumps(res)
+
+@app.after_request
+def after_request(response): 
+    response.headers['Access-Control-Allow-Origin'] = '*' 
+    response.headers['Access-Control-Allow-Credentials'] = 'true' 
+    response.headers['Access-Control-Allow-Methods'] = 'GET' 
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, X-Requested-With' 
+    return response
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
@@ -106,8 +120,11 @@ def search():
         return search_video()
     elif dtype == "3":
         return search_ppt()
-    else:
+    elif dtype == "4":
         return search_ebook()
+    elif dtype== "5":
+        return search_id()
+
 
 
 @app.route('/', methods=['GET'])

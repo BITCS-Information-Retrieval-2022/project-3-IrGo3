@@ -32,7 +32,7 @@ class DBAccess:
         for id in id_list:
             db_query = {"_id": id if isinstance(id, ObjectId) else ObjectId(id)}
             db_res = self.doc.find_one(db_query)
-            db_res["_id"] = 0
+            db_res["_id"] = str(db_res["_id"])
             res.append(db_res)
             # print(res)
         return res
@@ -42,3 +42,10 @@ class DBAccess:
         # DBAccess.reformat_id(res)
         query["hits"]["hit"] = res
         return query
+
+    def search_by_id(self, id):
+        db_query = {"_id": id if isinstance(id, ObjectId) else ObjectId(id)}
+        db_res = self.doc.find_one(db_query)
+        db_res["_id"] = str(db_res["_id"])
+        # print(res)
+        return db_res

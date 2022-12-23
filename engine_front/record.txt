@@ -1,0 +1,25 @@
+<div>
+        <a-card hoverable>
+            <a-card-meta
+                    :title="info._source.title"
+                    :description="info._source.authors">
+                <template v-slot:avatar><a-avatar style="backgroundColor:#13d029">{{info._source._id}}</a-avatar>
+                </template>
+            </a-card-meta>
+            <div class="describe">“{{info._source.url}}”</div>
+            <div style="text-align: right">{{info._score}}</div>
+        </a-card>
+    </div>
+
+
+flv.js用于bilibili
+import Vue from "vue";
+import VueYouTubeEmbed from "vue-youtube-embed";
+import VueVimeoPlayer from "vue-vimeo-player";
+
+Vue.use(VueYouTubeEmbed, { global: true, componentId: "youtube-player" });
+Vue.use(VueVimeoPlayer);
+
+https://www.youtube-nocookie.com/embed/0QKhAdN-keY
+    <iframe id="showvideo" allowfullscreen="allowfullscreen" src="" sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
+写ThirdPage中的searchResult->searchDetails

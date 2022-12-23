@@ -13,14 +13,14 @@ parameters = {
     # es
     "es_port": 9200,
     "es_user": "elastic",
-    "es_password": "000000",
+    "es_password": "",
     "papers_index": "paper",
     "ppt_index": "ppt",
     "video_index": "video",
     "ebook_index": "ebook",
 
     # db
-    "db_port": 27018,
+    "db_port": 27019,
     "db_name": "IR",
     "papers_doc": "paper",
     "ppt_doc": "ppt",
