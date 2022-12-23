@@ -168,5 +168,3 @@ class VideoClient(ESClient):
         hit["total"] = res["hits"]["total"]["value"]
         hit["hit"] = id_list
         return hit
-
-

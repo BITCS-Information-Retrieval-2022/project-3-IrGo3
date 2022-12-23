@@ -13,7 +13,6 @@ from settings import parameters
 from ESUtils import genQuery
 from ESClient import PaperClient, VideoClient, PPTClient, EbookClient
 from DBAccess import DBAccess
-import json
 
 app = Flask(__name__)
 CORS(app)
@@ -96,20 +95,23 @@ def search_video():
     print(res)
     return json.dumps(res["hits"]["hit"])
 
+
 def search_id():
-    id=request.args.get('query', '')
+    id = request.args.get('query', '')
     print(type(id))
     print(id)
     res = paper_db.search_by_id(id)
     return json.dumps(res)
 
+
 @app.after_request
-def after_request(response): 
-    response.headers['Access-Control-Allow-Origin'] = '*' 
-    response.headers['Access-Control-Allow-Credentials'] = 'true' 
-    response.headers['Access-Control-Allow-Methods'] = 'GET' 
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, X-Requested-With' 
+def after_request(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Credentials'] = 'true'
+    response.headers['Access-Control-Allow-Methods'] = 'GET'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, X-Requested-With'
     return response
+
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
@@ -122,9 +124,8 @@ def search():
         return search_ppt()
     elif dtype == "4":
         return search_ebook()
-    elif dtype== "5":
+    elif dtype == "5":
         return search_id()
-
 
 
 @app.route('/', methods=['GET'])
