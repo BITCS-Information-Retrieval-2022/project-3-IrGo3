@@ -1,12 +1,91 @@
-# Irgogogo学术搜索引擎——中文简介
+# Irgo3学术搜索引擎——中文简介
 
-## 概况
-详情请见`report.PPT`
-项目中有两个客户端,engine_front更加完整一些,front_end功能上也是完整的，特效略显不足;
+## 1.概况
+- 项目主要分为5个模块,客户端（vue前端）、服务端（flask后端）、搜索引擎（ElasticSearch)、数据库（MongoDB)、爬虫
+![Es-error](./images/framework.png)
 
-## 项目配置
-1. 数据库、ES配置,详见config文件夹的readme;
-2. 服务端python依赖配置;
+- 项目中有两个客户端,`engine_front`更加完整一些,`front_end`功能上也是完整的，特效略显不足;
+
+- 详情请见`report.ppt`
+
+## 2.项目配置
+
+### 2.1 配置版本
+
+本项目在windows上运行，其中相关服务的版本号
+* Nodejs：v16.14.0
+* Python、Flask：参见backend文件夹下的requirements
+* MongoDB：db version v5.0.10-rc0
+* monstache：6.7.11
+* ElasticSearch：7.5.0
+
+其它辅助工具:
+* navicat：navicat 15，用于方便地查看数据库的数据;（需要进行破解）
+* kiabana：kiabana 7.5.0，用于方便地查看ElasticSearch的数据；
+
+注: 不同版本的服务合并在一起可能出现问题，例如使用比较新的ElasticSearch执行初始化操作，可能会发生如下错误：
+![Es-error](./images/es_error.jpg)
+
+### 2.2 数据获取
+获取过程与预处理略。
+* 启动爬虫爬取数据，爬取后的数据中有一部分URL需要加上网站的前缀；
+* 从paperwithcode和ACL等不同来源爬取的数据需要将字段整理一致。
+* ACL_crawler不能直接使用,需要修改;
+
+已获取的测试数据可以从百度网盘下载：
+
+```
+链接：https://pan.baidu.com/s/1uKJsWsMOUDAlzRoKsws1aw 
+提取码：14nw 
+```
+
+#### 示例
+以下是整理好的四个数据库的展示，注意副本集和主集合的内容应该是一样的：
+
+- 电子书ebook:
+![mongo_ebook](./images/mongo_ebook.png)
+- 论文paper:
+![mongo_papers1](./images/mongo_papers1.png)
+![mongo_papers2](./images/mongo_papers2.png)
+- 演示文稿PPT:
+![mongo_ppt](./images/mongo_PPT.png)
+- 视频videos:
+![mongo_video1](./images/mongo_video1.png)
+![mongo_video2](./images/mongo_video2.png)
+
+配置好的视图配置展示：
+
+- 电子书ebook:
+![view_ebook](./images/view_ebook.png)
+- 论文paper:
+![view_papers](./images/view_papers.png)
+
+- 演示文稿PPT:
+![view_ppt](./images/view_ppts.png)
+- 视频videos:
+![view_video1](./images/view_video.png)
+
+同步成功的ElasticSearch索引信息如下所示：
+
+- 索引信息:
+![es](./images/es.png)
+
+- 查询测试:
+![es](./images/es_test.png)
+
+- 索引映射信息：
+![es](./images/es_info.png)
+
+* 注意：如果monstache同步失败,不会报错,但是ES中是没有数据的
+
+### 2.3 配置过程
+
+1. 数据库、ES配置：
+* 将爬虫爬取得到的json数据，导入到数据库(mongoDB)中；
+* 需要将Mongodb的数据同步到ElasticSearch中；
+* 详见config文件夹的readme;
+
+2. 服务端python依赖配置:
 
 在conda环境启动以后,进入`backend`文件夹,其中`requirements.txt`在该文件夹中;
 ```python
@@ -25,20 +104,22 @@ conda install pymongo==3.12.0
 
 3. 客户端配置:
 - 首先安装nodejs,使得能用npm;
-- 进入项目文件夹`engine_front`,运行npm install,安装项目依赖;
+- 进入项目文件夹`engine_front`,运行`npm install`,安装项目依赖;
 
-## 运行步骤 
+## 3.运行步骤 
+
 1. 启动数据库，详见config文件夹的readme
-2. 启动Elasticsearch，详见config文件夹的readme
-3. 启动服务器:
-启动虚拟环境: activate minisearch
+2. 启动Elasticsearch，详见config文件夹的readme（同步后数据查询实际发生于Elasticsearch）
+3. 启动monstache，将数据库与ElasitcSearch同步，详见config文件夹的readme（有数据同步需求时操作即可,没有则不必操作）
 
-进入server目录`backend`,运行:python main.py
+4. 启动服务器:
+- 启动conda虚拟环境，运行:conda activate minisearch
+- 进入server目录`backend`,运行:python main.py
 
-4. 启动客户端:
-进入client目录`engine_front`，运行：npm run serve
+5. 启动客户端:
+- 进入client目录`engine_front`，运行：npm run serve
 
-# Irgogogo scientific search engine —— English version
+# Irgo3 scientific search engine —— English version
 
 ## Introduction
 Our project contains mainly 5 parts,that is webcrawle,a front end,a backend,a mongodb database and an Elasticsearch search engine part.

@@ -1,0 +1,8 @@
+mongod --config "D:\mongodb\rs\conf\master.conf"
+mongod --config "D:\mongodb\rs\conf\slaver.conf"
+
+GET /paper/_search
+
+curl -X DELETE localhost:9200/video
+
+curl -X GET localhost:9200/paper/_search

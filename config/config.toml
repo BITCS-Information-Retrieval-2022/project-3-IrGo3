@@ -4,7 +4,7 @@ verbose = true
 
 
 # connect to MongoDB using the following URL
-mongo-url = "mongodb://localhost:27018"
+mongo-url = "mongodb://localhost:27019"
 # connect to the Elasticsearch REST API at the following node URLs
 elasticsearch-urls = ["http://localhost:9200"]
 
@@ -28,16 +28,16 @@ resume-strategy = 0
 
 # if you need to seed an index from a collection and not just listen and sync changes events
 # you can copy entire collections or views from MongoDB to Elasticsearch
-direct-read-namespaces = ["paper.paperwithcodeView"] # read direct from the view of the collection to seed index
+direct-read-namespaces = ["IR.paperView","IR.videoView","IR.pptView","IR.ebookView"] # read direct from the view of the collection to seed index
 
 # change-stream-namespaces = ["paper.paperwithcode"] # change events happen on the underlying collections not views
 
 #生产环境记录日志必不可少，monstache默认是输出到标准输出的，这里指定它输出到指定的日志文件（这个也是踩坑踩出来的哦！）
 [logs]
-info = "D:/Program Files(x86)/elasticsearch/monstache-9e60b1d/log/monstore-center/info.log"
-warn = "D:/Program Files(x86)/elasticsearch/monstache-9e60b1d/log/monstore-center/warn.log"
-error = "D:/Program Files(x86)/elasticsearch/monstache-9e60b1d/log/monstore-center/error.log"
-trace = "D:/Program Files(x86)/elasticsearch/monstache-9e60b1d/log/monstore-center/trace.log"
+info = "D:/monstache-6cdd72c/log/info.log"
+warn = "D:/monstache-6cdd72c/log/warn.log"
+error = "D:/monstache-6cdd72c/log/error.log"
+trace = "D:/monstache-6cdd72c/log/trace.log"
 
 #设置日志切割参数，下面的配置意思是：每个日志文件超过500M会被切割，最大保存最近60个日志文件，会压缩历史日志
 [log-rotate]
