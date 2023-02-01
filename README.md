@@ -1,12 +1,14 @@
 # Irgogogo学术搜索引擎——中文简介
 
 ## 概况
-详情请见`信息检索课程答辩.PPT`
+详情请见`report.PPT`
+项目中有两个客户端,engine_front更加完整一些,front_end功能上也是完整的，特效略显不足;
 
 ## 项目配置
 1. 数据库、ES配置,详见config文件夹的readme;
-2. 服务端python的库文件配置;
+2. 服务端python依赖配置;
 
+在conda环境启动以后,进入`backend`文件夹,其中`requirements.txt`在该文件夹中;
 ```python
 conda create -n minisearch python=3.7
 pip install -r requirements.txt
@@ -23,16 +25,18 @@ conda install pymongo==3.12.0
 
 3. 客户端配置:
 - 首先安装nodejs,使得能用npm;
-- 进入项目文件夹,运行npm install,安装项目依赖;
+- 进入项目文件夹`engine_front`,运行npm install,安装项目依赖;
 
 ## 运行步骤 
 1. 启动数据库，详见config文件夹的readme
 2. 启动Elasticsearch，详见config文件夹的readme
 3. 启动服务器:
 启动虚拟环境: activate minisearch
-进入server目录: python main.py
+
+进入server目录`backend`,运行:python main.py
+
 4. 启动客户端:
-进入engine_front目录: npm run serve
+进入client目录`engine_front`，运行：npm run serve
 
 # Irgogogo scientific search engine —— English version
 
