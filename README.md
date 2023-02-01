@@ -4,25 +4,44 @@
 详情请见`信息检索课程答辩.PPT`
 
 ## 项目配置
-详见config文件夹的readme
+1. 数据库、ES配置,详见config文件夹的readme;
+2. 服务端python的库文件配置;
+
+```python
+conda create -n minisearch python=3.7
+pip install -r requirements.txt
+```
+
+也可以如下一点点安装;
+```python
+conda create -n minisearch python=3.7
+conda install flask==2.0.2
+conda install flask_cors==3.0.8
+conda install elasticsearch==7.0.4
+conda install pymongo==3.12.0
+```
+
+3. 客户端配置:
+- 首先安装nodejs,使得能用npm;
+- 进入项目文件夹,运行npm install,安装项目依赖;
 
 ## 运行步骤 
 1. 启动数据库，详见config文件夹的readme
 2. 启动Elasticsearch，详见config文件夹的readme
-3. 启动服务器
-启动虚拟环境: activate miniSearchEngine
+3. 启动服务器:
+启动虚拟环境: activate minisearch
 进入server目录: python main.py
-4. 启动客户端
+4. 启动客户端:
 进入engine_front目录: npm run serve
 
 # Irgogogo scientific search engine —— English version
 
 ## Introduction
-Our project contains mainly 5 parts,that is webcrawler,
+Our project contains mainly 5 parts,that is webcrawle,a front end,a backend,a mongodb database and an Elasticsearch search engine part.
 1. we have to admit that the webcrawler is not very powerful but merely for collect data process.
-2. The project now is merely a demo with projects.
+2. The project now is merely a demo projects.
  
-Please refer to the `信息检索课程答辩.PPT`
+Please refer to the `report.PPT` for details
 
 ## Configuration in windows
 For details please refer to the `readme` in `config` file folder
@@ -33,12 +52,18 @@ For details please refer to the `readme` in `config` file folder
 3. start the server:
 
 - first install the dependencies of the server part,do the following instructions:
+
 ```python
 conda create -n minisearch python=3.7
 conda install flask==2.0.2
 conda install flask_cors==3.0.8
 conda install elasticsearch==7.0.4
 conda install pymongo==3.12.0
+```
+or you can follow the `requirements.txt` file using the following command:
+```python
+conda create -n minisearch python=3.7
+pip install -r requirements.txt
 ```
 * notice the flask package installation probably have some problem; 
 * the total dependent package are listed below,if some packages conflict, please check the version again.Notice the package includes scrapyelasticsearch and scrapy which is for the webcrawler and not used here.
